@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Compra de Celular</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(https://th.bing.com/th/id/R.3cac260a5bb499637911421534af9227?rik=iwIauOZ8Qyb1BA&riu=http%3a%2f%2fwww.azul-limpeza.com.br%2fwp-content%2fuploads%2f2018%2f05%2fFundo-Azul-site-DTSWAY-azul-degrade.jpg&ehk=qAFE4UxEV4QiJwaDneO4zRF%2bHkdHyhK63uhMy6OF%2bcw%3d&risl=&pid=ImgRaw&r=0);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            width: 100%;
+            background: #007bff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: #fff;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        select,
+        input[type="checkbox"],
+        input[type="submit"],
+        input[type="radio"] {
+            margin-top: 8px;
+        }
+
+        select,
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .acessorios {
+            margin-top: 10px;
+        }
+
+        .acessorios label {
+            font-weight: normal;
+        }
+
+        .condicao label {
+            font-weight: normal;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">Loja de celulares</div>
+
+    <div class="container">
+        <h2>Compra de Celular</h2>
+
+        <form>
+
+            <!-- Modelo -->
+            <label for="modelo">Modelo do Celular:</label>
+            <select id="modelo" name="modelo">
+                <option value="iphone-15">iPhone 15</option>
+                <option value="iphone-17">iPhone 17</option>
+                <option value="s23">Samsung Galaxy S23</option>
+                <option value="s24">Samsung Galaxy S24</option>
+                <option value="s25">Samsung Galaxy S25</option>
+            </select>
+
+            <!-- Cor -->
+            <label for="cor">Cor:</label>
+            <select id="cor" name="cor">
+                <option value="preto">Preto</option>
+                <option value="branco">Branco</option>
+                <option value="azul">Grafite</option>
+                <option value="vermelho">laranja</option>
+                <option value="dourado">Dourado</option>
+            </select>
+
+            <!-- Armazenamento -->
+            <label for="armazenamento">Capacidade de Armazenamento:</label>
+            <select id="armazenamento" name="armazenamento">
+                <option value="128gb">128 GB</option>
+                <option value="256gb">256 GB</option>
+                <option value="512gb">512 GB</option>
+                <option value="1tb">1 TB</option>
+            </select>
+
+            <!-- Capacidade de Bateria -->
+            <label for="bateria">Capacidade da Bateria:</label>
+            <select id="bateria" name="bateria">
+                <option value="3000mah">3000 mAh</option>
+                <option value="4000mah">4000 mAh</option>
+                <option value="5000mah">5000 mAh</option>
+                <option value="6000mah">6000 mAh</option>
+            </select>
+
+            <!-- Condição do Dispositivo -->
+            <label>Condição do Dispositivo:</label>
+            <div class="condicao">
+                <label><input type="radio" name="condicao" value="novo" checked> Novo</label>
+                <label><input type="radio" name="condicao" value="usado"> Usado</label>
+            </div>
+
+            <!-- Acessórios -->
+            <label>Acessórios:</label>
+            <div class="acessorios">
+                <label><input type="checkbox" name="acessorios" value="fone"> Fone de Ouvido</label><br>
+                <label><input type="checkbox" name="acessorios" value="capinha"> Capinha</label><br>
+                <label><input type="checkbox" name="acessorios" value="pelicula"> Película</label><br>
+                <label><input type="checkbox" name="acessorios" value="carregador"> Carregador</label><br>
+                <label><input type="checkbox" name="acessorios" value="powerbank"> Power Bank</label><br>
+            </div>
+
+            <input type="submit" value="Enviar Pedido">
+
+        </form>
+    </div>
+
+</body>
+
+</html>
