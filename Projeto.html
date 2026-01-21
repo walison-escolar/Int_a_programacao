@@ -3,154 +3,343 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Compra de Celular</title>
-
+    <title>Gerenciador de Celulares</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-image: url(https://th.bing.com/th/id/R.3cac260a5bb499637911421534af9227?rik=iwIauOZ8Qyb1BA&riu=http%3a%2f%2fwww.azul-limpeza.com.br%2fwp-content%2fuploads%2f2018%2f05%2fFundo-Azul-site-DTSWAY-azul-degrade.jpg&ehk=qAFE4UxEV4QiJwaDneO4zRF%2bHkdHyhK63uhMy6OF%2bcw%3d&risl=&pid=ImgRaw&r=0);
-            background-repeat: no-repeat;
-            background-size: cover;
+            background: #000;
             margin: 0;
             padding: 0;
+            color: #eee;
+            font-family: 'WarungKopi';
+        }
+
+        @font-face {
+            font-family: 'WarungKopi';
+            src: url(Warung\ Kopi.otf);
         }
 
         .navbar {
             width: 100%;
-            background: #007bff;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background: #111;
+            padding: 15px;
             text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
             color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
         }
 
         .container {
-            width: 90%;
-            max-width: 500px;
-            background: #fff;
-            margin: 40px auto;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #1e1c1c;
         }
 
-        select,
-        input[type="checkbox"],
-        input[type="submit"],
-        input[type="radio"] {
-            margin-top: 8px;
-        }
-
-        select,
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 15px;
+        .section {
+            background: #1c1c1c;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
         }
 
         h2 {
             text-align: center;
-            color: #333;
+            color: #ffb84d;
+            margin-bottom: 20px;
         }
 
         label {
-            font-weight: bold;
-            margin-top: 15px;
+            font-weight: 600;
+            margin-top: 12px;
             display: block;
+            color: #ddd;
         }
 
-        .acessorios {
-            margin-top: 10px;
+        select,
+        input[type="text"],
+        input[type="submit"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            font-size: 15px;
+            background: #111;
+            color: #eee;
+            transition: all 0.3s ease;
         }
 
-        .acessorios label {
-            font-weight: normal;
+        select:focus,
+        input[type="text"]:focus {
+            border-color: #ba7e24;
+            outline: none;
+            box-shadow: 0 0 6px #ffb84d;
         }
 
-        .condicao label {
-            font-weight: normal;
-            margin-right: 15px;
+        input[type="submit"],
+        button {
+            background: #ffb84d;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background: #ba7e24;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: #333;
+            color: #fff;
+            padding: 12px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #444;
+            color: #eee;
+        }
+
+        tr:nth-child(even) {
+            background: #222;
+        }
+
+        .actions button {
+            margin: 2px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .actions button:first-child {
+            background: #38ada9;
+            color: #fff;
+            border: none;
+        }
+
+        .actions button:first-child:hover {
+            background: #079992;
+        }
+
+        .actions button:last-child {
+            background: #e55039;
+            color: #fff;
+            border: none;
+        }
+
+        .actions button:last-child:hover {
+            background: #b71540;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">Loja de celulares</div>
+    <div class="navbar">Loja de Celulares</div>
 
     <div class="container">
-        <h2>Compra de Celular</h2>
+        <h2>Cadastro de Celular</h2>
+        <form id="formCelular">
 
-        <form>
-
-            <!-- Modelo -->
-            <label for="modelo">Modelo do Celular:</label>
-            <select id="modelo" name="modelo">
-                <option value="iphone-13">iPhone-13</option>
-                <option value="iphone-14">iPhone-14</option>
-                <option value="iphone-15">iPhone-15</option>
-                <option value="iphone-17">iPhone-17</option>
-                <option value="s22">Samsung Galaxy S22</option>
-                <option value="s23">Samsung Galaxy S23</option>
-                <option value="s24">Samsung Galaxy S24</option>
-                <option value="s25">Samsung Galaxy S25</option>
+            <!-- modelo -->
+            <label>Modelo:</label>
+            <select id="modelo">
+                <option value="iPhone 13">iPhone 13</option>
+                <option value="iPhone 14">iPhone 14</option>
+                <option value="iPhone 15">iPhone 15</option>
+                <option value="iPhone 16">iPhone 16</option>
+                <option value="Samsung Galaxy S22">Samsung Galaxy S22</option>
+                <option value="Samsung Galaxy S23">Samsung Galaxy S23</option>
+                <option value="Samsung Galaxy S24">Samsung Galaxy S24</option>
+                <option value="Samsung Galaxy S25">Samsung Galaxy S25</option>
+                <option value="Xiaomi Redmi Note 13">Xiaomi Redmi Note 13</option>
+                <option value="Xiaomi Redmi Note 14">Xiaomi Redmi Note 14</option>
+                <option value="Xiaomi Mi 12">Xiaomi Mi 12</option>
+                <option value="Xiaomi Mi 13">Xiaomi Mi 13</option>
+                <option value="Motorola Edge 40">Motorola Edge 40</option>
+                <option value="Motorola Edge 50">Motorola Edge 50</option>
+                <option value="Motorola Moto G84">Motorola Moto G84</option>
+                <option value="Motorola Moto G85">Motorola Moto G85</option>
+                <option value="Google Pixel 7">Google Pixel 7</option>
+                <option value="Google Pixel 8">Google Pixel 8</option>
+                <option value="Google Pixel 9">Google Pixel 9</option>
+                <option value="OnePlus 11">OnePlus 11</option>
+                <option value="OnePlus 12">OnePlus 12</option>
+                <option value="Huawei P60 Pro">Huawei P60 Pro</option>
+                <option value="Huawei Mate 50">Huawei Mate 50</option>
+                <option value="Realme GT 5">Realme GT 5</option>
+                <option value="Realme GT Neo 6">Realme GT Neo 6</option>
             </select>
 
-            <!-- Cor -->
-            <label for="cor">Cor:</label>
-            <select id="cor" name="cor">
-                <option value="preto">Preto</option>
-                <option value="branco">Branco</option>
-                <option value="grafite">Grafite</option>
-                <option value="laranja">laranja</option>
-                <option value="irisdicente">Irisdicente</option>
+            <!-- cor -->
+            <label>Cor:</label>
+            <select id="cor">
+                <option value="Preto">Preto</option>
+                <option value="Branco">Branco</option>
+                <option value="Grafite">Grafite</option>
+                <option value="Azul">Azul</option>
+                <option value="Azul-marinho">Azul Marinho</option>
+                <option value="Azul-claro">Azul Claro</option>
+                <option value="Vermelho">Vermelho</option>
+                <option value="Laranja">Laranja</option>
+                <option value="Cinza">Cinza</option>
+                <option value="Violeta">Violeta</option>
+                <option value="Irisdicente">Irisdicente</option>
             </select>
 
-            <!-- Armazenamento -->
-            <label for="armazenamento">Capacidade de Armazenamento:</label>
-            <select id="armazenamento" name="armazenamento">
-                <option value="128gb">128 GB</option>
-                <option value="256gb">256 GB</option>
-                <option value="512gb">512 GB</option>
-                <option value="1tb">1 TB</option>
+            <!-- armazenamento -->
+            <label>Armazenamento:</label>
+            <select id="armazenamento">
+                <option>64GB</option>
+                <option selected>128GB</option>
+                <option>256GB</option>
+                <option>512GB</option>
+                <option>1TB</option>
             </select>
 
-            <!-- Capacidade de Bateria -->
-            <label for="bateria">Capacidade da Bateria:</label>
-            <select id="bateria" name="bateria">
-                <option value="3000mah">3000 mAh</option>
-                <option value="4000mah">4000 mAh</option>
-                <option value="5000mah" selected>5000 mAh</option>
-                <option value="6000mah">6000 mAh</option>
+            <!-- bateria -->
+            <label>Bateria:</label>
+            <select id="bateria">
+                <option>3000mAh</option>
+                <option>4000mAh</option>
+                <option selected>5000mAh</option>
             </select>
 
-            <!-- Condição do Dispositivo -->
-            <label>Condição do Dispositivo:</label>
-            <div class="condicao">
-                <label><input type="radio" name="condicao" value="novo" checked> Novo</label>
-                <label><input type="radio" name="condicao" value="usado"> Usado</label>
-            </div>
+            <!-- condição do celular -->
+            <label>Condição:</label>
+            <label><input type="radio" name="condicao" value="Novo" checked> Novo</label>
+            <label><input type="radio" name="condicao" value="Usado"> Usado</label>
 
-            <!-- Acessórios -->
             <label>Acessórios:</label>
-            <div class="acessorios">
-                <label><input type="checkbox" name="acessorios" value="fone"> Fone de Ouvido</label><br>
-                <label><input type="checkbox" name="acessorios" value="capinha"> Capinha</label><br>
-                <label><input type="checkbox" name="acessorios" value="pelicula"> Película</label><br>
-                <label><input type="checkbox" name="acessorios" value="carregador" checked> Carregador</label><br>
-                <label><input type="checkbox" name="acessorios" value="powerbank"> Power Bank</label><br>
-            </div>
+            <label><input type="checkbox" name="acessorios" value="Fone"> Fone</label>
+            <label><input type="checkbox" name="acessorios" value="Capinha"> Capinha</label>
+            <label><input type="checkbox" name="acessorios" value="Carregador"> Carregador</label>
 
-            <input type="submit" value="Enviar Pedido">
-
+            <input type="submit" value="Salvar">
         </form>
+
+        <h2>Lista de Celulares</h2>
+        <input type="file" id="arquivoInput">
+        <button id="importarBtn">Importar CSV</button>
+        <button id="exportarBtn">Exportar CSV</button>
+        <div>
+            <table id="tabelaCelulares">
+                <thead>
+                    <tr>
+                        <th>Modelo</th>
+                        <th>Cor</th>
+                        <th>Armazenamento</th>
+                        <th>Bateria</th>
+                        <th>Condição</th>
+                        <th>Acessórios</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
 
+    <script>
+        let celulares = [];
+        const form = document.getElementById("formCelular");
+        const tabela = document.querySelector("#tabelaCelulares tbody");
+
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            const celular = {
+                modelo: document.getElementById("modelo").value,
+                cor: document.getElementById("cor").value,
+                armazenamento: document.getElementById("armazenamento").value,
+                bateria: document.getElementById("bateria").value,
+                condicao: document.querySelector("input[name='condicao']:checked").value,
+                acessorios: Array.from(document.querySelectorAll("input[name='acessorios']:checked")).map(el => el.value).join(", ")
+            };
+            celulares.push(celular);
+            renderTabela();
+            form.reset();
+        });
+
+        function renderTabela() {
+            tabela.innerHTML = "";
+            celulares.forEach((c, i) => {
+                const row = tabela.insertRow();
+                row.innerHTML = `
+      <td>${c.modelo}</td><td>${c.cor}</td><td>${c.armazenamento}</td>
+      <td>${c.bateria}</td><td>${c.condicao}</td><td>${c.acessorios}</td>
+      <td class="actions">
+        <button onclick="editarCelular(${i})">Editar</button>
+        <button onclick="excluirCelular(${i})">Excluir</button>
+      </td>`;
+            });
+        }
+
+        function excluirCelular(i) {
+            celulares.splice(i, 1);
+            renderTabela();
+        }
+
+        function editarCelular(i) {
+            const c = celulares[i];
+            document.getElementById("modelo").value = c.modelo;
+            document.getElementById("cor").value = c.cor;
+            document.getElementById("armazenamento").value = c.armazenamento;
+            document.getElementById("bateria").value = c.bateria;
+            document.querySelector(`input[name='condicao'][value='${c.condicao}']`).checked = true;
+            document.querySelectorAll("input[name='acessorios']").forEach(el => el.checked = c.acessorios.includes(el.value));
+            celulares.splice(i, 1); // remove para atualizar depois
+        }
+
+        // Importar CSV
+        document.getElementById("importarBtn").addEventListener("click", () => {
+            const file = document.getElementById("arquivoInput").files[0];
+            if (!file) return alert("Selecione um arquivo CSV!");
+            const reader = new FileReader();
+            reader.onload = e => {
+                const linhas = e.target.result.split("\n").slice(1);
+                linhas.forEach(linha => {
+                    const [modelo, cor, armazenamento, bateria, condicao, acessorios] = linha.split(",");
+                    if (modelo) celulares.push({ modelo, cor, armazenamento, bateria, condicao, acessorios });
+                });
+                renderTabela();
+            };
+            reader.readAsText(file);
+        });
+
+        // Exportar CSV
+        document.getElementById("exportarBtn").addEventListener("click", () => {
+            let csv = "Modelo,Cor,Armazenamento,Bateria,Condição,Acessórios\n";
+            celulares.forEach(c => {
+                csv += `${c.modelo},${c.cor},${c.armazenamento},${c.bateria},${c.condicao},${c.acessorios}\n`;
+            });
+            const blob = new Blob([csv], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "celulares.csv";
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    </script>
 </body>
 
 </html>
